@@ -2,6 +2,7 @@ import unittest
 import json
 from app import app, url_database
 
+
 class TestURLShortener(unittest.TestCase):
     def setUp(self):
         app.testing = True
@@ -45,6 +46,7 @@ class TestURLShortener(unittest.TestCase):
     def tearDown(self):
         # Clear the in-memory database after each test
         url_database.clear()
+
 
 if __name__ == '__main__':
     unittest.main()

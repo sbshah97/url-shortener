@@ -29,3 +29,8 @@ docker-build:
 
 docker-run:
 	@$(DOCKER_COMPOSE) up
+
+lint:
+    @echo "Linting with flake8"
+    @source venv/bin/activate && flake8 .
+    @deactivate

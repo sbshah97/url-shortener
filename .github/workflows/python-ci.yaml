@@ -29,6 +29,13 @@ jobs:
         pip install -r requirements.txt
         deactivate
 
+    - name: Install flake8
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install flake8
+        deactivate
+
     - name: Lint with flake8
       run: |
         source venv/bin/activate

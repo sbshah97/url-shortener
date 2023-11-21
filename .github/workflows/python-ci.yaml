@@ -45,10 +45,9 @@ jobs:
     - name: Run tests
       run: |
         source venv/bin/activate
-        python test_app.py
+        make test
         deactivate
 
-    - name: Build and run tests using Docker
+    - name: Build using Docker
       run: |
         docker-compose build
-        docker-compose run app make test

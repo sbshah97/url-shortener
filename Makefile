@@ -29,3 +29,6 @@ docker-build:
 
 docker-run:
 	@$(DOCKER_COMPOSE) up
+
+lint:
+	@flake8 .

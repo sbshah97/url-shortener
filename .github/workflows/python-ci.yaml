@@ -29,6 +29,13 @@ jobs:
         pip install -r requirements.txt
         deactivate
 
+    - name: Install flake8
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install flake8
+        deactivate
+
     - name: Lint with flake8
       run: |
         source venv/bin/activate
@@ -38,10 +45,9 @@ jobs:
     - name: Run tests
       run: |
         source venv/bin/activate
-        python test_app.py
+        make test
         deactivate
 
-    - name: Build and run tests using Docker
+    - name: Build using Docker
       run: |
         docker-compose build
-        docker-compose run app make test

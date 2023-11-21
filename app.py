@@ -6,11 +6,13 @@ app = Flask(__name__)
 # In-memory database to store shortened URLs
 url_database = {}
 
+
 def shorten_url(long_url):
     # Generate a hash of the long URL to create a unique shortened version
     hash_object = hashlib.md5(long_url.encode())
     short_url = hash_object.hexdigest()[:8]
     return short_url
+
 
 @app.route('/shorten', methods=['POST'])
 def shorten():
@@ -29,6 +31,7 @@ def shorten():
 
     return jsonify({'short_url': short_url}), 201
 
+
 @app.route('/<short_url>', methods=['GET'])
 def redirect_to_long_url(short_url):
     # Retrieve the long URL from the in-memory database
@@ -38,6 +41,7 @@ def redirect_to_long_url(short_url):
         return jsonify({'error': 'Shortened URL not found'}), 404
 
     return jsonify({'long_url': long_url}), 200
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Docker
+.docker/
+
+# Logs
+*.log
+
+# VSCode
+.vscode/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Python bytecode
+*.pyc
+
+# macOS
+.DS_Store
+
+# Compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Temporary files
+*.swp
+*~
+
+# Flask related files
+instance/
+__init__.pyc

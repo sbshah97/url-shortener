@@ -1,0 +1,47 @@
+name: Python CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install -r requirements.txt
+        deactivate
+
+    - name: Lint with flake8
+      run: |
+        source venv/bin/activate
+        flake8 .
+        deactivate
+
+    - name: Run tests
+      run: |
+        source venv/bin/activate
+        python test_app.py
+        deactivate
+
+    - name: Build and run tests using Docker
+      run: |
+        docker-compose build
+        docker-compose run app make test
